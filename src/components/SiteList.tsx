@@ -25,7 +25,6 @@ const SiteList = () => {
 
 }
   useEffect(()=> {
-
     getSiteList();
 
   }, [])

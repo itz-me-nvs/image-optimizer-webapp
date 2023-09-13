@@ -4,6 +4,7 @@ import App from "../App"
 import Authorize from "./Authorize"
 import CMSOptimizationPage from "./CMSOptimizePage"
 import LoaderComponent from "./Loading"
+import ProtectedRoute from "./ProtectedRoute"
 import SiteList from "./SiteList"
 import useAuth from "./useAuth"
 
@@ -19,7 +20,8 @@ const RouterWrapper = () => {
                 path="authorize"
                 element={ isAuthorized ? <Navigate to="/" /> : <Authorize />}
               />
-        <Route path="/" element={isAuthorized ? <App /> : <Authorize />}>
+        <Route path="/" element={<App />}>
+        <Route element={<ProtectedRoute />}>
         <Route index element={<SiteList />} />
 
             <Route
@@ -30,6 +32,7 @@ const RouterWrapper = () => {
                   path="sites/:siteID"
                   element={<CMSOptimizationPage />}
                 />
+        </Route>
         </Route>
         </Routes>
         </Suspense>
