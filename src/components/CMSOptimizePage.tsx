@@ -122,6 +122,8 @@ const CMSOptimizationPage: React.FC = () => {
           setDone(true);
         } catch (error) {
           console.error(error);
+          setIsOptimizing(false);
+          setDone(false);
         }
       }
     }
